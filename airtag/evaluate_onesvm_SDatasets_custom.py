@@ -7,6 +7,7 @@ from sklearn.metrics import precision_score, recall_score, f1_score
 from sklearn import metrics
 import time
 import argparse
+import os
 
 data=[]
 parser = argparse.ArgumentParser()
@@ -22,8 +23,13 @@ gama_=float(args.gama)
 suffix=args.suffix+"/" # Exp comes here via args
 path=['training_preprocessed_logs_S1-CVE-2015-5122_windows','training_preprocessed_logs_S2-CVE-2015-3105_windows','testing_preprocessed_logs_S3-CVE-2017-11882_windows','training_preprocessed_logs_S4-CVE-2017-0199_windows_py']
 # path=['testing_preprocessed_logs_S1-CVE-2015-5122_windows','training_preprocessed_logs_S2-CVE-2015-3105_windows','testing_preprocessed_logs_S3-CVE-2017-11882_windows','training_preprocessed_logs_S4-CVE-2017-0199_windows_py']
-# f=open("/home/tpiuser2/prov_project/amaan/embedding_data/"+suffix+"S"+str(flag)+"_benign.json")
-f=open("/scratch/piddl/amaan/amaan_airtag/embedding_data/"+suffix+"S"+str(flag)+"_benign.json")
+
+from pathlib import Path
+base_dir = Path(__file__).resolve().parent
+embedding_path = base_dir / "embedding_data" / (suffix + f"S{flag}_benign.json")
+print(embedding_path)
+f = open(embedding_path)
+
 
 number_list=['S1_number_.npy','S2_number_.npy','S3_number_.npy','S4_number_.npy']
 
@@ -106,8 +112,9 @@ for num_1 in range(len(predict_result)):
 acc = m / len(predict_result)
 print("benign accuracy")
 print(acc)
-# f=open("/home/tpiuser2/prov_project/amaan/embedding_data/"+suffix+"S"+str(flag)+"_test.json",'r')
-f=open("/scratch/piddl/amaan/amaan_airtag/embedding_data/"+suffix+"S"+str(flag)+"_test.json",'r')
+
+embedding_path = base_dir / "embedding_data" / (suffix + f"S{flag}_test.json")
+f = open(embedding_path)
 strr=f.read().split("\n")
 f.close()
 for i in range(len(strr)-1):
@@ -123,9 +130,7 @@ test1_time=time.time()
 import numpy as np
 # suffix2="my_ground_data/"
 suffix2="automation/"
-
-# strr=np.load('/home/tpiuser2/prov_project/amaan/ground_data/'+suffix2+number_list[flag-1])
-strr=np.load('/scratch/piddl/amaan/amaan_airtag/ground_data/'+suffix2+number_list[flag-1])
+strr = np.load(base_dir / "ground_data" / (suffix2 + number_list[flag - 1]))
 labels=np.ones(len(value2))
 for i in range(len(strr)):
   if int(strr[i])<=len(value2):
@@ -162,7 +167,8 @@ print(a2/(a2+a1))
 a_labels=predict_labels.copy()
 for j in range(1,11):
   threshold=0.3
-  predict_labels=second_class('/scratch/piddl/amaan/amaan_airtag/training_data/'+suffix+path[flag-1],a_labels,threshold,flag)
+  train_file = base_dir / "training_data" / (suffix + path[flag - 1])
+  predict_labels = second_class(str(train_file), a_labels, threshold, flag)
   a1=0
   a2=0
   a3=0
@@ -170,7 +176,9 @@ for j in range(1,11):
   result_array=[]
   fpresults=[]
   benign_benign=[]
-  logs_f=open('/scratch/piddl/amaan/amaan_airtag/training_data/'+suffix+path[flag-1],'r')
+
+  train_file = base_dir / "training_data" / (suffix + path[flag - 1])
+  logs_f = open(train_file, 'r')
   logs=logs_f.read().split("\n")
   logs_f.close()
   logs_classify=[]
