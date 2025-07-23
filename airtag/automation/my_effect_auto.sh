@@ -279,7 +279,7 @@ echo "test data s3 done."
 wait
 echo "test data s4 done."
 
-nohup python -u ../evaluate_onesvm_SDatasets_custom.py -flag 1 -nu 0.1 -gama 0.1 -gpu 0 -suffix "automation" > ../logs/automation/S1.log & wait
-nohup python -u ../evaluate_onesvm_SDatasets_custom.py -flag 2 -nu 0.1 -gama 0.15 -gpu 0 -suffix "automation" > ../logs/automation/S2.log & wait
-nohup python -u ../evaluate_onesvm_SDatasets_custom.py -flag 3 -nu 0.1 -gama 0.2 -gpu 0 -suffix "automation" > ../logs/automation/S3.log & wait
-nohup python -u ../evaluate_onesvm_SDatasets_custom.py -flag 4 -nu 0.1 -gama 0.15 -gpu 0 -suffix "automation" > ../logs/automation/S4.log & wait
+# nohup python -u ../evaluate_onesvm_SDatasets_custom.py -flag 1 -nu 0.1 -gama 0.1 -gpu 0 -suffix "automation" > ../logs/automation/S1.log & wait
+# nohup python -u ../evaluate_onesvm_SDatasets_custom.py -flag 2 -nu 0.1 -gama 0.15 -gpu 0 -suffix "automation" > ../logs/automation/S2.log & wait
+# nohup python -u ../evaluate_onesvm_SDatasets_custom.py -flag 3 -nu 0.1 -gama 0.2 -gpu 0 -suffix "automation" > ../logs/automation/S3.log & wait
+# nohup python -u ../evaluate_onesvm_SDatasets_custom.py -flag 4 -nu 0.1 -gama 0.15 -gpu 0 -suffix "automation" > ../logs/automation/S4.log & wait

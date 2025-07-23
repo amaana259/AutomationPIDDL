@@ -24,7 +24,7 @@ source ~/anaconda3/etc/profile.d/conda.sh
 set -e
 
 # OPTIONAL: Remove existing environment.
-conda env remove --name airtag_env_tester || true
+# conda env remove --name airtag_env_tester || true
 
 # Create or update the conda environment for testing.
 echo "Creating airtag_env if needed..."
@@ -39,21 +39,34 @@ echo "--- environment activated ---"
 conda list
 
 echo "--- running autoscript ---"
+
 # Single-host Datasets Run.
 # bash my_effect_auto.sh
 
 # Extract data from logs and into Excel sheet.
 
 echo " Extracting metrics from log files..."
-python extract_metrics.py
+python -u extract_metrics.py --dataset 1
 
 if [ $? -eq 0 ]; then
-    echo "Metrics extracted successfully into clustering_results.xlsx"
+    echo "Metrics extracted successfully for SDatasets."
 else
-    echo "Failed to extract metrics"
+    echo "Failed to extract metrics for SDatasets."
 fi
 
 # Multi-host Datasets Run.
+# bash my_effect_m_auto.sh
+
+# Extract data from logs and into Excel sheet.
+
+echo " Extracting metrics from log files..."
+python -u extract_metrics.py --dataset 2
+
+if [ $? -eq 0 ]; then
+    echo "Metrics extracted successfully for MDatasets."
+else
+    echo "Failed to extract metrics for MDatasets."
+fi
 
 # DEACTIVATE: Once done, deactivate the environment.
 conda deactivate

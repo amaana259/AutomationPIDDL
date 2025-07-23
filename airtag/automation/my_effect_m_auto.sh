@@ -279,6 +279,7 @@ echo "test data m124 done."
 wait
 echo "test data m341 done."
 
+
 # nohup python -u ../extract_multi_process2.py \
 #   --input_file=../training_data/automationmul/M342_test \
 #   --output_file=../embedding_data/automationmul/M342_test.json  \
@@ -318,8 +319,10 @@ echo "test data m343 done."
 #   --max_seq_length=32 \
 #   --batch_size=2048 > ../logs/automationmul/extract_M344_test.log &
 
+#   wait
 wait
 echo "test data m344 done."
+
 
 #   nohup python -u ../extract_multi_process2.py \
 #   --input_file=../training_data/automationmul/M561_test \
@@ -334,6 +337,7 @@ echo "test data m344 done."
 
 wait
 echo "test data m561 done."
+
 
 # nohup python -u ../extract_multi_process2.py \
 #   --input_file=../training_data/automationmul/M562_test \
@@ -377,6 +381,6 @@ echo "test data m563 done."
 wait
 echo "test data m564 done."
 
-nohup python -u ../evaluate_onesvm_12_ground_modify.py -nu 0.08 -gama 0.3 -gpu 0 -suffix automationmul > ../logs/automationmul/M12.log & wait
-nohup python -u ../evaluate_onesvm_34_ground_modify.py -nu 0.08 -gama 0.3 -gpu 0 -suffix automationmul > ../logs/automationmul/M34.log & wait
-nohup python -u ../evaluate_onesvm_56_ground_modify.py -nu 0.08 -gama 0.3 -gpu 0 -suffix automationmul > ../logs/automationmul/M56.log & wait
+# nohup python -u ../evaluate_onesvm_12_ground_modify.py -nu 0.08 -gama 0.3 -gpu 0 -suffix automationmul > ../logs/automationmul/M12.log & wait
+# nohup python -u ../evaluate_onesvm_34_ground_modify.py -nu 0.08 -gama 0.3 -gpu 0 -suffix automationmul > ../logs/automationmul/M34.log & wait
+# nohup python -u ../evaluate_onesvm_56_ground_modify.py -nu 0.08 -gama 0.3 -gpu 0 -suffix automationmul > ../logs/automationmul/M56.log & wait
