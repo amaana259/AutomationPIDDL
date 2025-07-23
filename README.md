@@ -8,9 +8,13 @@ Single-host dataset runs --> done.
 
 Graph Data Extraction --> done.
 
-Graph Data Processing --> in progress, small task.
+Graph Data Processing --> in progress, small task, need to look into Zenodo and discuss with team.
 
-Multi-host dataset runs --> in progress, small task.
+Multi-host dataset runs --> done.
+
+Graph Data Extraction --> done.
+
+Graph Data Processing --> in progress, small task, need to look into Zenodo and discuss with team.
 
 AirTag To-Do:
 
